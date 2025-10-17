@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import HandTracking from './components/HandTracking';
 
 function App() {
+  const lyrics = [
+    { time: 0, text: 'hello', aslSign: 'hello' },
+    { time: 5, text: 'world', aslSign: 'world' },
+    { time: 10, text: 'learn', aslSign: 'learn' },
+    { time: 15, text: 'asl', aslSign: 'asl' }
+  ];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <div>
+      <h1>justhands - ASL Learning Demo</h1>
+      <div style={{ marginBottom: 20 }}>
+        <h3>Song Lyrics</h3>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          {lyrics.map(word => (
+            <span
+              key={word.time}
+              style={{ fontWeight: 'bold', marginRight: 10, cursor: 'pointer' }}
+              title={`ASL Sign: ${word.aslSign}`}
+            >
+              {word.text}
+            </span>
+          ))}
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      </div>
+      <HandTracking />
     </div>
   );
 }
